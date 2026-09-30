@@ -198,6 +198,31 @@
   text-decoration: underline;
 }
 
+.cadastro-link {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--ambar);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.cadastro-link:hover {
+  text-decoration: underline;
+}
+
+.cadastro-link:focus-visible {
+  outline: 2px solid var(--ambar);
+  outline-offset: 3px;
+}
+
+.cadastro-erro {
+  margin: 0;
+  color: var(--rosa);
+  font-size: 0.9rem;
+}
+
 /* ---------- Responsivo e acessibilidade ---------- */
 
 @media (max-width: 800px) {
