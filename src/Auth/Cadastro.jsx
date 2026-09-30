@@ -7,6 +7,23 @@ function Cadastro() {
   const [senha, setSenha] = useState("")
   const [confirmaSenha, setConfirmaSenha] = useState("")
 
+  const [user, setUser] = useState({})
+
+  function validarUser(){
+    if(!nome || !email || !senha || !confirmaSenha){
+      alert("Preencha todos os campos")
+      return
+    }
+
+    setUser({
+      nome: nome,
+      email: email, 
+      senha: senha 
+    })
+
+    console.log(user)
+  }
+
   return (
     <main className="cadastro">
       <aside className="cadastro-visual" aria-hidden="true">
@@ -67,7 +84,7 @@ function Cadastro() {
             />
           </div>
 
-          <button type="submit" className="cadastro-botao">
+          <button type="button" className="cadastro-botao" onClick={() => validarUser()}>
             Criar conta
           </button>
 
