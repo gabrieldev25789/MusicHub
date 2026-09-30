@@ -9,10 +9,17 @@ function Cadastro() {
 
   const [user, setUser] = useState({})
 
+  const [entrar, setEntrar] = useState(false)
+
   function validarUser(){
     if(!nome || !email || !senha || !confirmaSenha){
       alert("Preencha todos os campos")
       return
+    }
+
+    if(senha !== confirmaSenha){
+      alert("Senhas diferentes")
+      return 
     }
 
     setUser({
@@ -24,8 +31,12 @@ function Cadastro() {
     console.log(user)
   }
 
-  return (
-    <main className="cadastro">
+  function entrarComUser(){
+    setEntrar(true)
+  }
+
+ return !entrar ? (
+<main className="cadastro">
       <aside className="cadastro-visual" aria-hidden="true">
         <div className="cadastro-disco">
           <div className="cadastro-disco-rotulo"></div>
@@ -89,12 +100,50 @@ function Cadastro() {
           </button>
 
           <p className="cadastro-login">
-            Já tem conta? <a href="/login">Entrar</a>
+            Já tem conta? <a href="#" onClick={() => entrarComUser()}>Entrar</a>
           </p>
         </form>
       </section>
-    </main>
-  )
+    </main>) : (
+  <main className="cadastro">
+    <aside className="cadastro-visual" aria-hidden="true">
+      <div className="cadastro-disco">
+        <div className="cadastro-disco-rotulo"></div>
+      </div>
+      <p className="cadastro-slogan">Que bom te ver de volta.</p>
+    </aside>
+
+    <section className="cadastro-painel">
+      <form className="cadastro-form">
+        <h2 className="cadastro-titulo">Entrar</h2>
+        <p className="cadastro-subtitulo">
+          Acesse sua biblioteca de artistas, álbuns e músicas.
+        </p>
+
+        <div className="cadastro-campo">
+          <label htmlFor="emailLogin">E-mail</label>
+          <input id="emailLogin" type="email" placeholder="voce@email.com" />
+        </div>
+
+        <div className="cadastro-campo">
+          <label htmlFor="senhaLogin">Senha</label>
+          <input id="senhaLogin" type="password" placeholder="Sua senha" />
+        </div>
+
+        <button type="button" className="cadastro-botao">
+          Entrar
+        </button>
+
+        <p className="cadastro-login">
+          Ainda não tem conta?{" "}
+          <button type="button" className="cadastro-link" onClick={() => setEntrar(false)}>
+            Criar conta
+          </button>
+        </p>
+      </form>
+    </section>
+  </main>
+)
 }
 
 export default Cadastro
