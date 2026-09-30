@@ -1,10 +1,11 @@
 import '../../musicHub/global.css'
+import Cadastro from './Auth/Cadastro'
 
 function App() {
 
   return (
     <>
-     <h2>Bem vindo a MusicHub</h2>
+     <Cadastro />
     </>
   )
 }
