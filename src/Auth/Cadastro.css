@@ -1,0 +1,225 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500&display=swap");
+
+.cadastro {
+  --fundo: #16112a;
+  --painel: #1f1838;
+  --campo: #2a2148;
+  --texto: #f4efff;
+  --texto-suave: #b3a8d6;
+  --rosa: #ff4f7b;
+  --ambar: #ffb547;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: "DM Sans", system-ui, sans-serif;
+}
+
+/* ---------- Lado visual: o disco ---------- */
+
+.cadastro-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 2rem;
+  background: radial-gradient(circle at 30% 20%, #3a2466 0%, var(--fundo) 70%);
+}
+
+.cadastro-disco {
+  position: relative;
+  width: min(340px, 70%);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    repeating-radial-gradient(circle at center, #0d0a18 0 2px, #1a1430 2px 4px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: girar 12s linear infinite;
+}
+
+/* reflexo do vinil */
+.cadastro-disco::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(255, 255, 255, 0.12) 40deg,
+    transparent 90deg,
+    transparent 180deg,
+    rgba(255, 255, 255, 0.12) 220deg,
+    transparent 270deg
+  );
+}
+
+.cadastro-disco-rotulo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 34%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--rosa), var(--ambar));
+}
+
+/* furo central */
+.cadastro-disco-rotulo::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: var(--fundo);
+}
+
+.cadastro-slogan {
+  max-width: 18ch;
+  margin: 0;
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- Lado do formulário ---------- */
+
+.cadastro-painel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: var(--painel);
+}
+
+.cadastro-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  width: 100%;
+  max-width: 380px;
+}
+
+.cadastro-titulo {
+  margin: 0;
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.cadastro-subtitulo {
+  margin: -0.4rem 0 0.6rem;
+  color: var(--texto-suave);
+}
+
+.cadastro-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.cadastro-campo label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--texto-suave);
+}
+
+.cadastro-campo input {
+  padding: 0.85rem 1rem;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: var(--campo);
+  color: var(--texto);
+  font: inherit;
+  transition: border-color 0.2s;
+}
+
+.cadastro-campo input::placeholder {
+  color: #7d72a3;
+}
+
+.cadastro-campo input:focus-visible {
+  outline: none;
+  border-color: var(--rosa);
+}
+
+.cadastro-botao {
+  margin-top: 0.6rem;
+  padding: 0.95rem;
+  border: none;
+  border-radius: 999px;
+  background: var(--rosa);
+  color: #1a0b14;
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.15s, background 0.2s;
+}
+
+.cadastro-botao:hover {
+  background: #ff6b90;
+  transform: scale(1.02);
+}
+
+.cadastro-botao:focus-visible {
+  outline: 3px solid var(--ambar);
+  outline-offset: 3px;
+}
+
+.cadastro-login {
+  margin: 0.4rem 0 0;
+  text-align: center;
+  color: var(--texto-suave);
+}
+
+.cadastro-login a {
+  color: var(--ambar);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.cadastro-login a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Responsivo e acessibilidade ---------- */
+
+@media (max-width: 800px) {
+  .cadastro {
+    grid-template-columns: 1fr;
+  }
+
+  .cadastro-visual {
+    padding: 2rem 1rem 1rem;
+  }
+
+  .cadastro-disco {
+    width: 160px;
+  }
+
+  .cadastro-slogan {
+    font-size: 1.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cadastro-disco {
+    animation: none;
+  }
+}
