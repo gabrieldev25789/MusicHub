@@ -11,6 +11,9 @@ function Cadastro() {
   const [user, setUser] = useState({})
   const [entrar, setEntrar] = useState(false)
 
+  const [emailLogado, setEmailLogado] = useState("")
+  const [senhaLogado, setSenhaLogado] = useState("")
+
   // ---------- Funções ----------
   function validarUser() {
     if (!nome || !email || !senha || !confirmaSenha) {
@@ -32,9 +35,15 @@ function Cadastro() {
     console.log(user)
   }
 
-  function entrarComUser() {
-    setEntrar(true)
+function entrarComUser() {
+
+  if(emailLogado === user.email 
+  && senhaLogado === user.senha){
+    alert("Logado com user")
   }
+  setEntrar(true)
+
+}
 
   // ---------- Tela de cadastro ----------
   if (!entrar) {
@@ -134,15 +143,25 @@ function Cadastro() {
 
           <div className="cadastro-campo">
             <label htmlFor="emailLogin">E-mail</label>
-            <input id="emailLogin" type="email" placeholder="voce@email.com" />
+            <input 
+            id="emailLogin" 
+            type="email" 
+            placeholder="voce@email.com" 
+            value={emailLogado} 
+            onChange={(e) => setEmailLogado(e.target.value)}/>
           </div>
 
           <div className="cadastro-campo">
             <label htmlFor="senhaLogin">Senha</label>
-            <input id="senhaLogin" type="password" placeholder="Sua senha" />
+            <input 
+            id="senhaLogin" 
+            type="password" 
+            placeholder="Sua senha" 
+            value={senhaLogado}
+            onChange={(e)=> setSenhaLogado(e.target.value)}/>
           </div>
 
-          <button type="button" className="cadastro-botao">
+          <button type="button" className="cadastro-botao" onClick={() => entrarComUser()}>
             Entrar
           </button>
 
