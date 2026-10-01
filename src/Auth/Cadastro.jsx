@@ -1,7 +1,8 @@
 import { useState } from "react"
 import "./Cadastro.css"
 
-function Cadastro() {
+function Cadastro({ setEntrarNaHome }) {
+
   // ---------- Estados ----------
   const [nome, setNome] = useState("")
   const [email, setEmail] = useState("")
@@ -44,6 +45,7 @@ function Cadastro() {
   function entrarComUser() {
     if (emailLogado === user.email && senhaLogado === user.senha) {
       alert("Logado com user")
+      setEntrarNaHome(true)
     } else {
       alert("E-mail ou senha incorretos")
     }
