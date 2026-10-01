@@ -21,6 +21,11 @@ function Cadastro() {
       return
     }
 
+    if (senha.length < 6) {
+      alert("A senha precisa ter no mínimo 6 caracteres")
+      return
+    }
+
     if (senha !== confirmaSenha) {
       alert("Senhas diferentes")
       return
@@ -32,18 +37,25 @@ function Cadastro() {
       senha: senha,
     })
 
-    console.log(user)
+    alert("Conta criada! Agora é só entrar.")
+    setEntrar(true)
   }
 
-function entrarComUser() {
-
-  if(emailLogado === user.email 
-  && senhaLogado === user.senha){
-    alert("Logado com user")
+  function entrarComUser() {
+    if (emailLogado === user.email && senhaLogado === user.senha) {
+      alert("Logado com user")
+    } else {
+      alert("E-mail ou senha incorretos")
+    }
   }
-  setEntrar(true)
 
-}
+  function irParaLogin() {
+    setEntrar(true)
+  }
+
+  function irParaCadastro() {
+    setEntrar(false)
+  }
 
   // ---------- Tela de cadastro ----------
   if (!entrar) {
@@ -116,7 +128,14 @@ function entrarComUser() {
             </button>
 
             <p className="cadastro-login">
-              Já tem conta? <a href="#" onClick={() => entrarComUser()}>Entrar</a>
+              Já tem conta?{" "}
+              <button
+                type="button"
+                className="cadastro-link"
+                onClick={() => irParaLogin()}
+              >
+                Entrar
+              </button>
             </p>
           </form>
         </section>
@@ -143,25 +162,31 @@ function entrarComUser() {
 
           <div className="cadastro-campo">
             <label htmlFor="emailLogin">E-mail</label>
-            <input 
-            id="emailLogin" 
-            type="email" 
-            placeholder="voce@email.com" 
-            value={emailLogado} 
-            onChange={(e) => setEmailLogado(e.target.value)}/>
+            <input
+              id="emailLogin"
+              type="email"
+              placeholder="voce@email.com"
+              value={emailLogado}
+              onChange={(e) => setEmailLogado(e.target.value)}
+            />
           </div>
 
           <div className="cadastro-campo">
             <label htmlFor="senhaLogin">Senha</label>
-            <input 
-            id="senhaLogin" 
-            type="password" 
-            placeholder="Sua senha" 
-            value={senhaLogado}
-            onChange={(e)=> setSenhaLogado(e.target.value)}/>
+            <input
+              id="senhaLogin"
+              type="password"
+              placeholder="Sua senha"
+              value={senhaLogado}
+              onChange={(e) => setSenhaLogado(e.target.value)}
+            />
           </div>
 
-          <button type="button" className="cadastro-botao" onClick={() => entrarComUser()}>
+          <button
+            type="button"
+            className="cadastro-botao"
+            onClick={() => entrarComUser()}
+          >
             Entrar
           </button>
 
@@ -170,7 +195,7 @@ function entrarComUser() {
             <button
               type="button"
               className="cadastro-link"
-              onClick={() => setEntrar(false)}
+              onClick={() => irParaCadastro()}
             >
               Criar conta
             </button>
