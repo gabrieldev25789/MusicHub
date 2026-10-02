@@ -262,6 +262,33 @@
 
 .home button:focus-visible { outline: 3px solid var(--ambar); outline-offset: 3px; }
 
+.home-albuns {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.25rem;
+}
+
+.home-album {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.85rem;
+  border-radius: 16px;
+  background: var(--painel);
+  transition: background 0.2s;
+}
+.home-album:hover { background: var(--campo); }
+
+.home-album-capa {
+  display: block;
+  aspect-ratio: 1;
+  margin-bottom: 0.6rem;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--c1), var(--c2));
+}
+
+.home-album strong { font-size: 0.95rem; line-height: 1.2; }
+
 @media (max-width: 800px) {
   .home { --passo: 95px; }
   .home-topo { flex-wrap: wrap; gap: 0.75rem 1rem; padding: 1rem; }
