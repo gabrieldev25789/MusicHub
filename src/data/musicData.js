@@ -8,12 +8,13 @@ export const generos = [
   { nome: "Jazz", cores: ["#3a86ff", "#8338ec"] },
 ]
 
+// 6 artistas por gênero deixa o anel mais bonito
 export const artistas = {
-  Pop: ["Taylor Swift", "Dua Lipa", "Billie Eilish", "Ariana Grande"],
-  Rock: ["Queen", "Nirvana", "Foo Fighters", "Led Zeppelin"],
-  "Indie Rock": ["Arctic Monkeys", "Tame Impala", "The Strokes", "Vampire Weekend"],
-  "Hip hop": ["Kendrick Lamar", "Travis Scott", "J. Cole", "Tyler, the Creator"],
-  "R&B": ["SZA", "The Weeknd", "Frank Ocean", "Daniel Caesar"],
-  Soul: ["Amy Winehouse", "Aretha Franklin", "Stevie Wonder", "Leon Bridges"],
-  Jazz: ["Miles Davis", "John Coltrane", "Norah Jones", "Ella Fitzgerald"],
+  Pop: ["Taylor Swift", "Dua Lipa", "Billie Eilish", "Ariana Grande", "Harry Styles", "Olivia Rodrigo"],
+  Rock: ["Queen", "Nirvana", "Foo Fighters", "Led Zeppelin", "Pink Floyd", "AC/DC"],
+  "Indie Rock": ["Arctic Monkeys", "Tame Impala", "The Strokes", "Vampire Weekend", "Mac DeMarco", "Beach House"],
+  "Hip hop": ["Kendrick Lamar", "Travis Scott", "J. Cole", "Tyler, the Creator", "Drake", "Nas"],
+  "R&B": ["SZA", "The Weeknd", "Frank Ocean", "Daniel Caesar", "Beyoncé", "H.E.R."],
+  Soul: ["Amy Winehouse", "Aretha Franklin", "Stevie Wonder", "Leon Bridges", "Marvin Gaye", "Alicia Keys"],
+  Jazz: ["Miles Davis", "John Coltrane", "Norah Jones", "Ella Fitzgerald", "Louis Armstrong", "Billie Holiday"],
 }
