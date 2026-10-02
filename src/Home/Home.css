@@ -63,13 +63,22 @@
 .home-busca:focus-visible { outline: none; border-color: var(--rosa); }
 
 .home-perfil {
-  width: 40px;
+  max-width: 160px;
   height: 40px;
+  padding: 0 1.1rem;
   border: none;
-  border-radius: 50%;
+  border-radius: 999px;
   background: var(--rosa);
   color: #1a0b14;
   font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background 0.2s;
+}
+
+.home-perfil:hover {
+  background: #ff6b90;
 }
 
 /* ---------- Roda de gêneros ---------- */
