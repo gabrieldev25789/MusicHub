@@ -4,10 +4,13 @@ import Home from './Home/Home'
 import { useState } from 'react'
 
 function App() {
-  const [entrarNaHome, setEntrarNaHome] = useState(false)
+
+  const [entrarNaHome, setEntrarNaHome] = useState(
+    () => !!localStorage.getItem("usuarioLogado")
+  )
 
   return entrarNaHome ? (
-    <Home />
+    <Home sair={() => setEntrarNaHome(false)} />
   ) : (
     <Cadastro setEntrarNaHome={setEntrarNaHome} />
   )
