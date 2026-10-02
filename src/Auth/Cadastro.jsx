@@ -10,6 +10,7 @@ function Cadastro({ setEntrarNaHome }) {
   const [confirmaSenha, setConfirmaSenha] = useState("")
 
   const [user, setUser] = useState({})
+  console.log(user)
   const [entrar, setEntrar] = useState(false)
 
   const [emailLogado, setEmailLogado] = useState("")
@@ -39,13 +40,18 @@ function Cadastro({ setEntrarNaHome }) {
     })
 
     alert("Conta criada! Agora é só entrar.")
-    localStorage.setItem("usuarioLogado", JSON.stringify({ nome, email }))
+    localStorage.setItem("usuarioCadastrado", JSON.stringify({ nome, email, senha }))
     setEntrar(true)
   }
 
   function entrarComUser() {
-    if (emailLogado === user.email && senhaLogado === user.senha) {
-      alert("Logado com user")
+    const salvo = JSON.parse(localStorage.getItem("usuarioCadastrado"))
+
+    if (salvo && emailLogado === salvo.email && senhaLogado === salvo.senha) {
+      localStorage.setItem(
+        "usuarioLogado",
+        JSON.stringify({ nome: salvo.nome, email: salvo.email })
+      )
       setEntrarNaHome(true)
     } else {
       alert("E-mail ou senha incorretos")
