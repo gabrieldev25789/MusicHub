@@ -1,7 +1,7 @@
 import { useState } from "react"
 import "./AnelArtistas.css"
 
-function AnelArtistas({ artistas }) {
+function AnelArtistas({ artistas, aoEscolher }) {
   // ---------- Estado ----------
   // "giro" conta quantos passos o anel já girou (pode crescer sem limite,
   // assim a animação nunca "volta pra trás": ela só continua a volta)
@@ -43,14 +43,17 @@ function AnelArtistas({ artistas }) {
             const diferenca = Math.abs(i - ativo)
             const distancia = Math.min(diferenca, total - diferenca)
             return (
-              <button
+            <button
                 key={nome}
                 type="button"
                 className={"anel-card" + (i === ativo ? " anel-card--ativo" : "")}
                 style={{ "--i": i, "--ang": `${passo}deg`, "--d": distancia }}
                 aria-current={i === ativo}
-                onClick={() => trazerParaFrente(i)}
-              >
+                onClick={() => {
+                trazerParaFrente(i)
+                aoEscolher?.(nome)
+                }}
+            >
                 <span className="anel-capa"></span>
                 <strong>{nome}</strong>
                 <small>Artista</small>
