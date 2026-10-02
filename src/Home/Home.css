@@ -63,22 +63,40 @@
 .home-busca:focus-visible { outline: none; border-color: var(--rosa); }
 
 .home-perfil {
-  max-width: 160px;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  max-width: 190px;
   height: 40px;
-  padding: 0 1.1rem;
+  padding: 0 1rem 0 4px;
   border: none;
   border-radius: 999px;
-  background: var(--rosa);
-  color: #1a0b14;
+  background: var(--campo);
+  color: var(--texto);
   font-weight: 500;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   transition: background 0.2s;
 }
 
 .home-perfil:hover {
-  background: #ff6b90;
+  background: #382d60;
+}
+
+.home-perfil-inicial {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--c1), var(--c2));
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.home-perfil-nome {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 /* ---------- Roda de gêneros ---------- */
