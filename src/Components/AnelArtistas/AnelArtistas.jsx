@@ -1,5 +1,6 @@
 import { useState } from "react"
 import "./AnelArtistas.css"
+import { imagemArtista } from "../../data/musicData"
 
 function AnelArtistas({ artistas, aoEscolher }) {
   // ---------- Estado ----------
@@ -54,7 +55,8 @@ function AnelArtistas({ artistas, aoEscolher }) {
                 aoEscolher?.(nome)
                 }}
             >
-                <span className="anel-capa"></span>
+                <span className="anel-capa" 
+                style={{ "--img": `url(${imagemArtista(nome)})` }}></span>
                 <strong>{nome}</strong>
                 <small>Artista</small>
               </button>
