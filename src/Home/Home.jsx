@@ -9,6 +9,8 @@ function Home() {
   const [ativo, setAtivo] = useState(2)
   const genero = generos[ativo]
 
+  const userLogado = JSON.parse(localStorage.getItem("usuarioLogado"))
+
   return (
     <div className="home" style={{ "--c1": genero.cores[0], "--c2": genero.cores[1] }}>
       {/* ---------- Topo ---------- */}
@@ -26,7 +28,7 @@ function Home() {
           placeholder="Buscar artistas, álbuns, músicas"
           aria-label="Buscar"
         />
-        <button type="button" className="home-perfil" aria-label="Perfil">U</button>
+        <button type="button" className="home-perfil" aria-label="Perfil">{userLogado?.nome}</button>
       </header>
 
       <main className="home-conteudo">
