@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { generos, artistas } from "../data/musicData"
 import RodaGeneros from "../Components/RodaGeneros/RodaGeneros"
+import AnelArtistas from "../Components/AnelArtistas/AnelArtistas"
 import Player from "../Components/Player/Player"
 import "./Home.css"
 
@@ -52,15 +53,10 @@ function Home({ sair }) {
         {/* ---------- Artistas do gênero escolhido ---------- */}
         <section className="home-secao" key={genero.nome}>
           <h2 className="home-secao-titulo">Artistas de {genero.nome}</h2>
-          <ul className="home-artistas">
-            {artistas[genero.nome].map((nome) => (
-              <li key={nome} className="home-artista">
-                <span className="home-artista-capa"></span>
-                <strong>{nome}</strong>
-                <small>Artista</small>
-              </li>
-            ))}
-          </ul>
+          <section className="home-secao" key={genero.nome}>
+            <h2 className="home-secao-titulo">Artistas de {genero.nome}</h2>
+            <AnelArtistas key={genero.nome} artistas={artistas[genero.nome]} />
+          </section>
         </section>
       </main>
 
