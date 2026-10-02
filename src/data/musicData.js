@@ -8,6 +8,19 @@ export const generos = [
   { nome: "Jazz", cores: ["#3a86ff", "#8338ec"] },
 ]
 
+export function slug(texto) {
+  return texto
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "")
+}
+
+export const imagemArtista = (nome) => `/img/artistas/${slug(nome)}.jpg`
+export const imagemAlbum = (artista, titulo) =>
+  `/img/albuns/${slug(artista)}/${slug(titulo)}.jpg`
+
 // 6 artistas por gênero deixa o anel mais bonito
 export const artistas = {
   Pop: ["Michael Jackson", "The Weeknd", "Rihanna", "Lady Gaga", "Taylor Swift", "Ariana Grande"],
