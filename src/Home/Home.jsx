@@ -1,14 +1,22 @@
 import { useState } from "react"
-import { generos, artistas } from "../data/musicData"
+import { generos, artistas, albuns } from "../data/musicData"
 import RodaGeneros from "../Components/RodaGeneros/RodaGeneros"
 import AnelArtistas from "../Components/AnelArtistas/AnelArtistas"
 import Player from "../Components/Player/Player"
 import "./Home.css"
 
 function Home({ sair }) {
-  // ---------- Estado ----------
+  // ---------- Estados ----------
   const [ativo, setAtivo] = useState(2)
+  const [artistaEscolhido, setArtistaEscolhido] = useState(null)
+
   const genero = generos[ativo]
+  const listaArtistas = artistas[genero.nome]
+
+  // só mostra os álbuns se o artista pertence ao gênero atual
+  const artistaVisivel = listaArtistas.includes(artistaEscolhido)
+    ? artistaEscolhido
+    : null
 
   const userLogado = JSON.parse(localStorage.getItem("usuarioLogado"))
 
@@ -53,11 +61,28 @@ function Home({ sair }) {
         {/* ---------- Artistas do gênero escolhido ---------- */}
         <section className="home-secao" key={genero.nome}>
           <h2 className="home-secao-titulo">Artistas de {genero.nome}</h2>
-          <section className="home-secao" key={genero.nome}>
-            <h2 className="home-secao-titulo">Artistas de {genero.nome}</h2>
-            <AnelArtistas key={genero.nome} artistas={artistas[genero.nome]} />
-          </section>
+          <AnelArtistas
+            key={genero.nome}
+            artistas={listaArtistas}
+            aoEscolher={setArtistaEscolhido}
+          />
         </section>
+
+        {/* ---------- Álbuns do artista escolhido ---------- */}
+        {artistaVisivel && (
+          <section className="home-secao" key={artistaVisivel}>
+            <h2 className="home-secao-titulo">Álbuns de {artistaVisivel}</h2>
+            <ul className="home-albuns">
+              {albuns[artistaVisivel].map((album) => (
+                <li key={album.titulo} className="home-album">
+                  <span className="home-album-capa"></span>
+                  <strong>{album.titulo}</strong>
+                  <small>{album.ano}</small>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
       </main>
 
       {/* ---------- Player ---------- */}
