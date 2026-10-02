@@ -39,6 +39,7 @@ function Cadastro({ setEntrarNaHome }) {
     })
 
     alert("Conta criada! Agora é só entrar.")
+    localStorage.setItem("usuarioLogado", JSON.stringify({ nome, email }))
     setEntrar(true)
   }
 
