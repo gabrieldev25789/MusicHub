@@ -4,12 +4,18 @@ import RodaGeneros from "../Components/RodaGeneros/RodaGeneros"
 import Player from "../Components/Player/Player"
 import "./Home.css"
 
-function Home() {
+function Home({ sair }) {
   // ---------- Estado ----------
   const [ativo, setAtivo] = useState(2)
   const genero = generos[ativo]
 
   const userLogado = JSON.parse(localStorage.getItem("usuarioLogado"))
+
+  // ---------- Funções ----------
+  function aoSair() {
+    localStorage.removeItem("usuarioLogado")
+    sair()
+  }
 
   return (
     <div className="home" style={{ "--c1": genero.cores[0], "--c2": genero.cores[1] }}>
@@ -20,6 +26,7 @@ function Home() {
         <nav className="home-nav" aria-label="Principal">
           <button type="button" className="home-nav-item home-nav-item--ativo">Início</button>
           <button type="button" className="home-nav-item">Biblioteca</button>
+          <button type="button" className="home-nav-item" onClick={() => aoSair()}>Sair</button>
         </nav>
 
         <input
@@ -28,7 +35,11 @@ function Home() {
           placeholder="Buscar artistas, álbuns, músicas"
           aria-label="Buscar"
         />
-        <button type="button" className="home-perfil" aria-label="Perfil">{userLogado?.nome}</button>
+
+        <button type="button" className="home-perfil" aria-label="Perfil">
+          <span className="home-perfil-inicial">{userLogado?.nome?.[0]}</span>
+          <span className="home-perfil-nome">{userLogado?.nome}</span>
+        </button>
       </header>
 
       <main className="home-conteudo">
