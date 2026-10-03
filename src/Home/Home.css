@@ -262,35 +262,19 @@
 
 .home button:focus-visible { outline: 3px solid var(--ambar); outline-offset: 3px; }
 
+/* ---------- Álbuns ---------- */
+
 .home-albuns {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 1.25rem;
 }
 
-.home-album {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  padding: 0.85rem;
-  border-radius: 16px;
-  background: var(--painel);
-  transition: background 0.2s;
-}
-.home-album:hover { background: var(--campo); }
-
-.home-album-capa {
-  display: block;
-  aspect-ratio: 1;
-  margin-bottom: 0.6rem;
-  border-radius: 10px;
-  background: linear-gradient(135deg, var(--c1), var(--c2));
-}
-
-.home-album strong { font-size: 0.95rem; line-height: 1.2; }
-
+/* o li estica até a altura da linha do grid */
+.home-albuns li { display: flex; }
 
 .home-album {
+  flex: 1; /* o botão ocupa o li inteiro */
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -307,6 +291,29 @@
 }
 .home-album:hover { background: var(--campo); }
 .home-album--ativo { background: var(--campo); border-color: var(--c1); }
+
+.home-album-capa {
+  display: block;
+  aspect-ratio: 1;
+  margin-bottom: 0.6rem;
+  border-radius: 10px;
+  background-image: var(--img, none), linear-gradient(135deg, var(--c1), var(--c2));
+  background-size: cover;
+  background-position: center;
+}
+
+/* título sempre com espaço de 2 linhas, cortado com "…" se passar */
+.home-album strong {
+  min-height: 2.4em;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 
 /* ---------- Faixas ---------- */
 
@@ -337,6 +344,16 @@
 }
 
 .home-faixas-vazio { color: var(--texto-suave); }
+
+.home-album-capa {
+  display: block;
+  aspect-ratio: 1;
+  margin-bottom: 0.6rem;
+  border-radius: 10px;
+  background-image: var(--img, none), linear-gradient(135deg, var(--c1), var(--c2));
+  background-size: cover;
+  background-position: center;
+}
 
 @media (max-width: 800px) {
   .home { --passo: 95px; }
