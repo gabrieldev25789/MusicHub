@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { generos, artistas, albuns } from "../data/musicData"
+import { generos, artistas, albuns, imagemAlbum } from "../data/musicData"
 import { faixasDoAlbum } from "../data/faixas"
 import RodaGeneros from "../Components/RodaGeneros/RodaGeneros"
 import AnelArtistas from "../Components/AnelArtistas/AnelArtistas"
@@ -91,16 +91,18 @@ function Home({ sair }) {
             <ul className="home-albuns">
               {albuns[artistaVisivel].map((album) => (
                 <li key={album.titulo}>
-                  <button
-                    type="button"
-                    className={
-                      "home-album" +
-                      (album.titulo === albumEscolhido ? " home-album--ativo" : "")
-                    }
-                    aria-pressed={album.titulo === albumEscolhido}
-                    onClick={() => setAlbumEscolhido(album.titulo)}
-                  >
-                    <span className="home-album-capa"></span>
+                <button
+                  type="button"
+                  title={album.titulo}
+                  className={
+                    "home-album" +
+                    (album.titulo === albumEscolhido ? " home-album--ativo" : "")
+                  }
+                  aria-pressed={album.titulo === albumEscolhido}
+                  onClick={() => setAlbumEscolhido(album.titulo)}
+                >
+                    <span className="home-album-capa"
+                    style={{ "--img": `url(${imagemAlbum(artistaVisivel, album.titulo)})` }}></span>
                     <strong>{album.titulo}</strong>
                     <small>{album.ano}</small>
                   </button>
