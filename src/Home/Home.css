@@ -289,6 +289,55 @@
 
 .home-album strong { font-size: 0.95rem; line-height: 1.2; }
 
+
+.home-album {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 100%;
+  padding: 0.85rem;
+  border: 2px solid transparent;
+  border-radius: 16px;
+  background: var(--painel);
+  color: var(--texto);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.home-album:hover { background: var(--campo); }
+.home-album--ativo { background: var(--campo); border-color: var(--c1); }
+
+/* ---------- Faixas ---------- */
+
+.home-faixas {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: faixa;
+}
+
+.home-faixa {
+  counter-increment: faixa;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+.home-faixa:hover { background: var(--painel); }
+
+.home-faixa::before {
+  content: counter(faixa);
+  width: 1.5rem;
+  color: var(--texto-suave);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.home-faixas-vazio { color: var(--texto-suave); }
+
 @media (max-width: 800px) {
   .home { --passo: 95px; }
   .home-topo { flex-wrap: wrap; gap: 0.75rem 1rem; padding: 1rem; }
